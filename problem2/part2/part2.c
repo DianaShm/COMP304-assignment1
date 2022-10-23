@@ -9,6 +9,7 @@
 #include <sys/stat.h>
 
 int main(void) {
+// same as part 1 of problem 2 but added many sleep() system calls.
 // FIFO file path
   char* myfifo1 = "/tmp/myfifo1";
   char* myfifo2 = "/tmp/myfifo2";
