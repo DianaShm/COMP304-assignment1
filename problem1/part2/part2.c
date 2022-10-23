@@ -13,6 +13,7 @@ int main(void) {
   char buffer[30];
   pid_t pid[4];
   int i;
+  // creating the 4 processes
   for (i = 0; i < 4; ++i) {
     pid[i] = fork();
     if (pid[i] == 0) {
@@ -22,6 +23,7 @@ int main(void) {
   }
 
   if (child) {
+    // each child will print the time every one second
     while (1) { //infinite loop
       sleep(1);
       gettimeofday(&tv, NULL); 
@@ -31,6 +33,7 @@ int main(void) {
       printf("time: %s%ld , pid: %d \n", buffer, tv.tv_usec, pid[0]);
     } 
   } else {
+    // the parent will kill the children
     sleep(5);
     for (i = 0; i < 4; ++i) {
       kill(pid[i], SIGKILL);
